@@ -118,34 +118,41 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"index.js":[function(require,module,exports) {
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 // Найти различия между цифрами в 2 массивах
-// const first = [1, 3, 3, 4, 6, 5, 4];
-// const second = [6, 3, 5, 2, 2];
-// const third = [8, 13, 222, 93, 43, 11];
+var first = [1, 3, 3, 4, 6, 5, 4];
+var second = [6, 3, 5, 2, 2]; // const third = [8, 13, 222, 93, 43, 11];
 // const fourth = [8, 222, 12, 93, 77, 83, 12, 43];
-// const getUnique = (firstArr, secondArr) => {
-// 1 variant
-//  const thirdArray = [...firstArr, ...secondArr];
-//  const newArray = thirdArray.filter((number, index) => {
-//   return index === thirdArray.indexOf(number);
-//  });
-//  return newArray.reduce((acc, el) => {
-//   return !firstArr.includes(el) || !secondArr.includes(el) ? [...acc, el] : acc;
-//  }, []);
-// 2 variant
-//  return [...firstArr, ...secondArr]
-//   .filter((el, index, array) => {
-//    return index === array.indexOf(el);
-//   })
-//   .sort()
-//   .reduce((acc, el) => {
-//    return !firstArr.includes(el) || !secondArr.includes(el)
-//     ? [...acc, el]
-//     : acc;
-//   }, []);
-// };
-// console.log(getUnique(first, second));
-// -----------------------------------------------------------
+
+var getUnique = function getUnique(firstArr, secondArr) {
+  // 1 variant
+  //  const thirdArray = [...firstArr, ...secondArr];
+  //  const newArray = thirdArray.filter((number, index) => {
+  //   return index === thirdArray.indexOf(number);
+  //  });
+  //  return newArray.reduce((acc, el) => {
+  //   return !firstArr.includes(el) || !secondArr.includes(el) ? [...acc, el] : acc;
+  //  }, []);
+  // 2 variant
+  return [].concat(_toConsumableArray(firstArr), _toConsumableArray(secondArr)).filter(function (el, index, array) {
+    return index === array.indexOf(el);
+  }).sort().reduce(function (acc, el) {
+    return !firstArr.includes(el) || !secondArr.includes(el) ? [].concat(_toConsumableArray(acc), [el]) : acc;
+  }, []);
+};
+
+console.log(getUnique(first, second)); // -----------------------------------------------------------
 // Джейден Смит, сын Уилла Смита, является звездой таких фильмов,
 // как The Karate Kid (2010) и After Earth (2013). Джейден также
 // известен своей философией, которую он распространяет через Twitter.
@@ -197,7 +204,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61486" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50526" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
